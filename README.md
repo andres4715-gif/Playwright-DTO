@@ -13,8 +13,23 @@
 └── tests/   
 ```
 
-# How to run: 
+# 1️⃣ How to run: 
 
 ```shell
 $ npm test
+```
+
+# 2️⃣ How to run in parallel execution with certain amount of workers: 
+```shell
+$ npx playwright test --workers=4
+```
+
+# 3️⃣ How to run in parallel execution with a script from package.json
+To run it you would need to use a script, this is an example: 
+
+> "test:workers:2": "playwright test --workers=2",
+
+## To run it in the terminal: 
+```shell
+$ npm run test:workers:2
 ```
