@@ -21,8 +21,7 @@ export class CommentDTO extends BaseDTO {
     this.body = body;
     this.id = id;
   }
-
-  // Es mejor no sobrescribir fromPlain, sino usar correctamente el de la clase base
+  // Is better overwrite fromPlain, but use the base class correctly
 }
 
 export class CreateCommentDTO extends BaseDTO {

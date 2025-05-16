@@ -1,19 +1,19 @@
 export abstract class BaseDTO {
   /**
-   * Convierte un objeto plano a una instancia del DTO
+   * Convert a plane object to an instance of DTO
    */
   public static fromPlain<T extends BaseDTO>(
     this: new (...args: any[]) => T,
     plain: Record<string, any>
   ): T {
     if (!plain) {
-      // Para evitar el error de tipo 'null is not assignable to type T'
+      // To avoid the error type 'null is not assignable to type T'
       return null as unknown as T;
     }
 
     const instance = new this();
 
-    // Asigna todas las propiedades del objeto plano a la instancia
+    // Assigns the all properties of the plane object to the instance
     Object.keys(plain).forEach((key) => {
       if (plain[key] !== undefined) {
         (instance as any)[key] = plain[key];
@@ -24,7 +24,7 @@ export abstract class BaseDTO {
   }
 
   /**
-   * Convierte la instancia a un objeto plano
+   * Convert the instance to an object plane
    */
   public toPlain(): Record<string, any> {
     const result: Record<string, any> = {};
