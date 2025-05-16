@@ -1,3 +1,5 @@
+![Screenshot 2025-05-16 at 14 21 46](https://github.com/user-attachments/assets/ca41b110-b86d-4598-9b32-6e041fd0193a)
+
 # JSONPlaceholder with Playwright and DTOs
 
 ```shell
