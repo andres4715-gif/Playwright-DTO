@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@validators/*": ["src/validators/*"],
+      "@services/*": ["src/services/*"],
+      "@dtos/*": ["src/dtos/*"]
+    },
+      "target": "es2021",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "outDir": "./dist",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "resolveJsonModule": true
+    },
+    "include": ["src/**/*", "tests/**/*", "playwright.config.ts", "base-api.service.ts"]
+  }

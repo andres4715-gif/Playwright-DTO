@@ -1,0 +1,29 @@
+{
+    "name": "playwright-api-framework",
+    "version": "1.0.0",
+    "description": "Automation Framework for JSONPlaceholder using Playwright",
+    "main": "index.js",
+    "scripts": {
+        "test": "playwright test",
+        "test:headed": "playwright test --headed",
+        "test:debug": "playwright test --debug"
+    },
+    "keywords": [
+        "playwright",
+        "typescript",
+        "api",
+        "testing",
+        "automation"
+    ],
+    "author": "Andres Rios",
+    "license": "ISC",
+    "devDependencies": {
+        "@playwright/test": "^1.40.0",
+        "@types/node": "^22.15.18",
+        "class-transformer": "^0.5.1",
+        "class-validator": "^0.14.0",
+        "dotenv": "^16.3.1",
+        "typescript": "^5.2.2",
+        "zod": "^3.22.4"
+    }
+}
