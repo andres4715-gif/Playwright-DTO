@@ -2,18 +2,21 @@ import { BaseApiService } from '../../base-api.service';
 import { CommentDTO, CreateCommentDTO } from '../dtos/comment.dto';
 import { Logger } from '../utils/logger';
 
+const endpoint = '/comments';
+
 /**
- * Servicio para interactuar con los endpoints de comentarios
+ * Service to interact with the comment endpoints
  */
 export class CommentService extends BaseApiService {
+
   /**
-   * Obtiene todos los comentarios
+   * Get all the comments
    */
   async getAllComments(): Promise<CommentDTO[]> {
-    Logger.info('Obteniendo todos los comentarios');
-    const response = await this.http.get<any[]>('/comments');
+    Logger.info('--- Getting all the comments');
+    const response = await this.http.get<any[]>(endpoint);
 
-    // La clave está en forzar el tipo de retorno
+    // The key is to force the return type
     return response.map((comment): CommentDTO => {
       return CommentDTO.fromPlain.call(CommentDTO, comment) as CommentDTO;
     });

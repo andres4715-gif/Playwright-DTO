@@ -1,5 +1,5 @@
 /**
- * Utilidad simple para registrar mensajes de log
+ * Simple Utility to log messages
  */
 export class Logger {
   static info(message: string, ...args: any[]): void {
@@ -11,7 +11,7 @@ export class Logger {
   }
 
   static debug(message: string, ...args: any[]): void {
-    // Manejo seguro de process.env
+    // Manage process.env
     const isDebug =
       typeof process !== 'undefined' &&
       process.env &&
