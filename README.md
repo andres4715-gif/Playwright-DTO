@@ -36,9 +36,12 @@ To run it you would need to use a script, this is an example:
 $ npm run test:workers:2
 ```
 
-# TODO 
+# ⚙️ TODO 🪚🪏
 - [ ] Use environment variables and implement it with dotenv
 - [ ] Make the schema validation for comments
 - [ ] Make the schema validation for Users
 - [ ] Make the schema validation for photo
 - [ ] Make the schema validation for album
+
+
+## 🔥 Framework in progress...
