@@ -8,7 +8,6 @@ const endpoint = '/comments';
  * Service to interact with the comment endpoints
  */
 export class CommentService extends BaseApiService {
-
   /**
    * Get all the comments
    */
@@ -27,7 +26,7 @@ export class CommentService extends BaseApiService {
    */
   async getCommentById(id: number): Promise<CommentDTO> {
     Logger.info(`--- Getting Comment for ID: ${id}`);
-    const response = await this.http.get<any>(`/${endpoint}/${id}`);
+    const response = await this.http.get<any>(`/comments/${id}`);
 
     // Explicit force the return type
     return CommentDTO.fromPlain.call(CommentDTO, response) as CommentDTO;
@@ -39,7 +38,7 @@ export class CommentService extends BaseApiService {
   async createComment(commentData: CreateCommentDTO): Promise<CommentDTO> {
     Logger.info('--- Making a new comment', commentData);
     const response = await this.http.post<any>(
-      `${endpoint}`,
+      '/comments',
       commentData.toPlain()
     );
 
@@ -52,7 +51,7 @@ export class CommentService extends BaseApiService {
    */
   async getCommentsByPostId(postId: number): Promise<CommentDTO[]> {
     Logger.info(`--- Get the post ID Comments: ${postId}`);
-    const response = await this.http.get<any[]>(`/posts/${postId}/${endpoint}`);
+    const response = await this.http.get<any[]>(`/posts/${postId}/comments`);
 
     // Explicity force the return type
     return response.map((comment): CommentDTO => {
