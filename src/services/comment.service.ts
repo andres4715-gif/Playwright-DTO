@@ -23,38 +23,38 @@ export class CommentService extends BaseApiService {
   }
 
   /**
-   * Obtiene un comentario por su ID
+   * Get comments by ID
    */
   async getCommentById(id: number): Promise<CommentDTO> {
-    Logger.info(`Obteniendo comentario con ID: ${id}`);
-    const response = await this.http.get<any>(`/comments/${id}`);
+    Logger.info(`--- Getting Comment for ID: ${id}`);
+    const response = await this.http.get<any>(`/${endpoint}/${id}`);
 
-    // Forzamos explícitamente el tipo de retorno
+    // Explicit force the return type
     return CommentDTO.fromPlain.call(CommentDTO, response) as CommentDTO;
   }
 
   /**
-   * Crea un nuevo comentario
+   * Making a new comment
    */
   async createComment(commentData: CreateCommentDTO): Promise<CommentDTO> {
-    Logger.info('Creando nuevo comentario', commentData);
+    Logger.info('--- Making a new comment', commentData);
     const response = await this.http.post<any>(
-      '/comments',
+      `${endpoint}`,
       commentData.toPlain()
     );
 
-    // Forzamos explícitamente el tipo de retorno
+    // Explicitly Force the return type
     return CommentDTO.fromPlain.call(CommentDTO, response) as CommentDTO;
   }
 
   /**
-   * Obtiene comentarios por post ID
+   * Get the post ID Comments
    */
   async getCommentsByPostId(postId: number): Promise<CommentDTO[]> {
-    Logger.info(`Obteniendo comentarios para el post con ID: ${postId}`);
-    const response = await this.http.get<any[]>(`/posts/${postId}/comments`);
+    Logger.info(`--- Get the post ID Comments: ${postId}`);
+    const response = await this.http.get<any[]>(`/posts/${postId}/${endpoint}`);
 
-    // Forzamos explícitamente el tipo de retorno
+    // Explicity force the return type
     return response.map((comment): CommentDTO => {
       return CommentDTO.fromPlain.call(CommentDTO, comment) as CommentDTO;
     });

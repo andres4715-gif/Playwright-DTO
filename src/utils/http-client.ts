@@ -2,7 +2,7 @@ import { request, APIRequestContext, APIResponse } from '@playwright/test';
 import { ApiError } from './api-error';
 
 /**
- * Cliente HTTP para realizar peticiones a la API
+ * HTTP client to make requests to the API
  */
 export class HttpClient {
   private context!: APIRequestContext;
@@ -13,7 +13,7 @@ export class HttpClient {
   ) {}
 
   /**
-   * Inicializa el contexto de la API
+   * Initialize the API context
    */
   async init(): Promise<void> {
     this.context = await request.newContext({
@@ -27,14 +27,14 @@ export class HttpClient {
   }
 
   /**
-   * Cierra el contexto de la API
+   * Close the API context
    */
   async close(): Promise<void> {
     await this.context.dispose();
   }
 
   /**
-   * Realiza una petición GET
+   * Make a GET Request
    */
   async get<T>(path: string, params?: Record<string, string>): Promise<T> {
     const queryParams = params ? new URLSearchParams(params).toString() : '';
@@ -51,7 +51,7 @@ export class HttpClient {
   }
 
   /**
-   * Realiza una petición POST
+   * Make a POST Request
    */
   async post<T>(path: string, data?: any): Promise<T> {
     const response = await this.context.post(path, {
@@ -67,7 +67,7 @@ export class HttpClient {
   }
 
   /**
-   * Realiza una petición PUT
+   * Make a PUT Request
    */
   async put<T>(path: string, data?: any): Promise<T> {
     const response = await this.context.put(path, {
@@ -83,7 +83,7 @@ export class HttpClient {
   }
 
   /**
-   * Realiza una petición PATCH
+   * Make a PATCH Request
    */
   async patch<T>(path: string, data?: any): Promise<T> {
     const response = await this.context.patch(path, {
@@ -99,7 +99,7 @@ export class HttpClient {
   }
 
   /**
-   * Realiza una petición DELETE
+   * Make a DELETE Request
    */
   async delete<T>(path: string): Promise<T> {
     const response = await this.context.delete(path);
@@ -113,7 +113,7 @@ export class HttpClient {
   }
 
   /**
-   * Crea un objeto de error de API
+   * Make an API error object
    */
   private createApiError(response: APIResponse, data?: any): ApiError {
     return new ApiError(
@@ -124,7 +124,7 @@ export class HttpClient {
   }
 
   /**
-   * Obtiene los datos de la respuesta
+   * Gets the response data
    */
   private async getResponseData(response: APIResponse): Promise<any> {
     try {

@@ -35,3 +35,6 @@ To run it you would need to use a script, this is an example:
 ```shell
 $ npm run test:workers:2
 ```
+
+# TODO 
+- [ ] Use environment variables and implement it with dotenv

@@ -2,7 +2,7 @@ import { HttpClient } from './src/utils/http-client';
 import { Logger } from './src/utils/logger';
 
 /**
- * Clase base para todos los servicios de API
+ * Class for all API Services 
  */
 export abstract class BaseApiService {
   protected http: HttpClient;
@@ -15,18 +15,18 @@ export abstract class BaseApiService {
   }
 
   /**
-   * Inicializa el servicio
+   * Initialize the service
    */
   async init(): Promise<void> {
     await this.http.init();
-    Logger.info(`Servicio ${this.constructor.name} inicializado`);
+    Logger.info(`--- initialized ${this.constructor.name} Service`);
   }
 
   /**
-   * Cierra el servicio
+   * Close the service 
    */
   async close(): Promise<void> {
     await this.http.close();
-    Logger.info(`Servicio ${this.constructor.name} cerrado`);
+    Logger.info(`--- Close ${this.constructor.name} Service`);
   }
 }
