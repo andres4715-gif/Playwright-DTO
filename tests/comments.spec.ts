@@ -14,7 +14,7 @@ test.describe('Comments API', () => {
     await commentService.close();
   });
 
-  test('[TEST] Should Obtain all the comments', async () => {
+  test.only('[TEST] Should Obtain all the comments', async () => {
     const comments = await commentService.getAllComments();
 
     // We check that there are comments
@@ -29,7 +29,7 @@ test.describe('Comments API', () => {
     expect(comment.body).toBeDefined();
   });
 
-  test('debería obtener un comentario por id', async () => {
+  test('[TEST] Should get a comment by id', async () => {
     const commentId = 1;
     const comment = await commentService.getCommentById(commentId);
 
