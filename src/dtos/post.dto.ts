@@ -40,12 +40,16 @@ export class CreatePostDTO extends BaseDTO {
  * UpdatePostDTO - DTO for update a POST (All of them are optionals)
  */
 export class UpdatePostDTO extends BaseDTO {
+  id?: number;
   userId?: number;
   title?: string;
   body?: string;
 
-  constructor(data: { userId?: number; title?: string; body?: string } = {}) {
+  constructor(
+    data: { id?: number; userId?: number; title?: string; body?: string } = {}
+  ) {
     super();
+    this.id = data.id;
     this.userId = data.userId;
     this.title = data.title;
     this.body = data.body;

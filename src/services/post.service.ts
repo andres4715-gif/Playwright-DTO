@@ -2,90 +2,83 @@ import { BaseApiService } from '../../base-api.service';
 import { PostDTO, CreatePostDTO, UpdatePostDTO } from '../dtos/post.dto';
 import { Logger } from '../utils/logger';
 
+const endpoint = '/posts';
 /**
- * Servicio para interactuar con los endpoints de posts
+ * Service to interact with the POSTS Endpoints
  */
 export class PostService extends BaseApiService {
   /**
-   * Obtiene todos los posts
+   * Get all posts
    */
   async getAllPosts(): Promise<PostDTO[]> {
-    Logger.info('Obteniendo todos los posts');
-    const response = await this.http.get<any[]>('/posts');
+    Logger.info('--- Getting all posts.');
+    const response = await this.http.get<any[]>(endpoint);
 
-    // Usar cast explícito para forzar el tipo correcto
     return response.map((post): PostDTO => {
       return PostDTO.fromPlain.call(PostDTO, post) as PostDTO;
     });
   }
 
   /**
-   * Obtiene un post por su ID
+   * Get Posts by ID
    */
   async getPostById(id: number): Promise<PostDTO> {
-    Logger.info(`Obteniendo post con ID: ${id}`);
-    const response = await this.http.get<any>(`/posts/${id}`);
+    Logger.info(`--- Getting post by ID: ${id}`);
+    const response = await this.http.get<any>(`${endpoint}/${id}`);
 
-    // Usar cast explícito
     return PostDTO.fromPlain.call(PostDTO, response) as PostDTO;
   }
 
   /**
-   * Crea un nuevo post
+   * Make a new post
    */
   async createPost(postData: CreatePostDTO): Promise<PostDTO> {
-    Logger.info('Creando nuevo post', postData);
-    // Asumiendo que http.post existe y está correctamente tipado
-    const response = await this.http.post<any>('/posts', postData.toPlain());
+    Logger.info('--- Making a new post: ', postData);
+    const response = await this.http.post<any>(endpoint, postData.toPlain());
 
-    // Usar cast explícito
     return PostDTO.fromPlain.call(PostDTO, response) as PostDTO;
   }
 
   /**
-   * Actualiza un post existente
+   * Update an existing post
    */
   async updatePost(id: number, postData: UpdatePostDTO): Promise<PostDTO> {
-    Logger.info(`Actualizando post con ID: ${id}`, postData);
-    // Asumiendo que http.put existe y está correctamente tipado
+    Logger.info(`--- Updating a post using his ID: ${id}`, postData);
     const response = await this.http.put<any>(
-      `/posts/${id}`,
+      `${endpoint}/${id}`,
       postData.toPlain()
     );
 
-    // Usar cast explícito
     return PostDTO.fromPlain.call(PostDTO, response) as PostDTO;
   }
 
   /**
-   * Actualiza parcialmente un post
+   * Partial Post update
    */
   async patchPost(id: number, postData: UpdatePostDTO): Promise<PostDTO> {
-    Logger.info(`Actualizando parcialmente post con ID: ${id}`, postData);
-    // Asumiendo que http.patch existe y está correctamente tipado
+    Logger.info(`--- Partial Update post ID: ${id}`, postData);
     const response = await this.http.patch<any>(
-      `/posts/${id}`,
+      `${endpoint}/${id}`,
       postData.toPlain()
     );
 
-    // Usar cast explícito
     return PostDTO.fromPlain.call(PostDTO, response) as PostDTO;
   }
 
   /**
-   * Elimina un post
+   * Delete a post
    */
   async deletePost(id: number): Promise<void> {
-    Logger.info(`Eliminando post con ID: ${id}`);
-    // Asumiendo que http.delete existe y está correctamente tipado
-    await this.http.delete<any>(`/posts/${id}`);
+    Logger.info(`--- Deleting post con ID: ${id}`);
+    await this.http.delete<any>(`${endpoint}/${id}`);
   }
 
   /**
-   * Obtiene los comentarios de un post
+   * Gets the post comments
    */
+  // TODO Check if this is working and necessary
   async getPostComments(postId: number): Promise<any[]> {
-    Logger.info(`Obteniendo comentarios del post con ID: ${postId}`);
-    return await this.http.get<any[]>(`/posts/${postId}/comments`);
+    Logger.info(`--- Getting post comment by ID: ${postId}`);
+    return await this.http.get<any[]>(`${endpoint}/${postId}/comments`);
   }
 }
