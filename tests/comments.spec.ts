@@ -14,13 +14,13 @@ test.describe('Comments API', () => {
     await commentService.close();
   });
 
-  test('debería obtener todos los comentarios', async () => {
+  test('[TEST] Should Obtain all the comments', async () => {
     const comments = await commentService.getAllComments();
 
-    // Verificamos que hay comentarios
+    // We check that there are comments
     expect(comments.length).toBeGreaterThan(0);
 
-    // Verificamos que el primer comentario tiene la estructura correcta
+    // We verify that the first comment has the correct structure
     const comment = comments[0];
     expect(comment.id).toBeDefined();
     expect(comment.postId).toBeDefined();
@@ -33,7 +33,7 @@ test.describe('Comments API', () => {
     const commentId = 1;
     const comment = await commentService.getCommentById(commentId);
 
-    // Verificamos que el comentario tiene la estructura correcta
+    // We verify that the comment has the correct structure
     expect(comment.id).toBe(commentId);
     expect(comment.postId).toBeDefined();
     expect(comment.name).toBeDefined();
@@ -41,30 +41,30 @@ test.describe('Comments API', () => {
     expect(comment.body).toBeDefined();
   });
 
-  test('debería obtener comentarios por post id', async () => {
+  test('[TEST] Should get comments by post id', async () => {
     const postId = 1;
     const comments = await commentService.getCommentsByPostId(postId);
 
-    // Verificamos que hay comentarios
+    // We check that there are comments
     expect(comments.length).toBeGreaterThan(0);
 
-    // Verificamos que todos los comentarios pertenecen al post
+    // We verify that all comments belong to the post
     comments.forEach((comment) => {
       expect(comment.postId).toBe(postId);
     });
   });
 
-  test('debería crear un comentario', async () => {
+  test('[TEST] Should make a comment', async () => {
     const newComment = new CreateCommentDTO(
       1,
-      'Nombre de prueba',
-      'email@ejemplo.com',
-      'Este es un comentario de prueba'
+      'Name of the test',
+      'email@example.com',
+      'This is the comment test'
     );
 
     const createdComment = await commentService.createComment(newComment);
 
-    // Verificamos que el comentario creado tiene la estructura correcta
+    // We verify that the comment created has the correct structure
     expect(createdComment.id).toBeDefined();
     expect(createdComment.postId).toBe(newComment.postId);
     expect(createdComment.name).toBe(newComment.name);

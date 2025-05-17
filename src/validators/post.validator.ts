@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 /**
- * Esquemas Zod para validar Posts
+ * Zod schemes to validate Posts
  */
 export const postSchema = z.object({
   id: z.number().int().positive(),

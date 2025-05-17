@@ -1,5 +1,5 @@
 /**
- * Clase para manejar errores de API de manera consistente
+ * Consistent API Error handling 
  */
 export class ApiError extends Error {
   statusCode: number;

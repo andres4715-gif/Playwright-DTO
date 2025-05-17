@@ -38,3 +38,7 @@ $ npm run test:workers:2
 
 # TODO 
 - [ ] Use environment variables and implement it with dotenv
+- [ ] Make the schema validation for comments
+- [ ] Make the schema validation for Users
+- [ ] Make the schema validation for photo
+- [ ] Make the schema validation for album
