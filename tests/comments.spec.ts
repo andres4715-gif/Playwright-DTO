@@ -14,7 +14,7 @@ test.describe('Comments API', () => {
     await commentService.close();
   });
 
-  test.only('[TEST] Should Obtain all the comments', async () => {
+  test('[TEST] Should Obtain all the comments', async () => {
     const comments = await commentService.getAllComments();
 
     // We check that there are comments
