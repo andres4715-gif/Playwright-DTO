@@ -54,7 +54,7 @@ test.describe('Comments API', () => {
     });
   });
 
-  test('[TEST] Should make a comment', async () => {
+  test.only('[TEST] Should make a comment', async () => {
     const newComment = new CreateCommentDTO(
       1,
       'Name of the test',

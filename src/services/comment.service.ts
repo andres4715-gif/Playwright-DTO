@@ -25,7 +25,7 @@ export class CommentService extends BaseApiService {
    * Get comments by ID
    */
   async getCommentById(id: number): Promise<CommentDTO> {
-    Logger.info(`--- Getting Comment for ID: ${id}`);
+    Logger.info(`--- Getting Comment ID: ${id}`);
     const response = await this.http.get<any>(`${endpoint}/${id}`);
 
     // Explicit force the return type
@@ -50,7 +50,7 @@ export class CommentService extends BaseApiService {
    * Get the post ID Comments
    */
   async getCommentsByPostId(postId: number): Promise<CommentDTO[]> {
-    Logger.info(`--- Get the post ID Comments: ${postId}`);
+    Logger.info(`--- Get the Comment by postId: ${postId}`);
     const response = await this.http.get<any[]>(`/posts/${postId}${endpoint}`);
 
     // Explicity force the return type
